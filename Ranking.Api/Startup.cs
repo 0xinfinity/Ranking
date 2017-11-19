@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+using Swashbuckle.AspNetCore.Swagger;
 namespace Ranking.Api
 {
     public class Startup
@@ -33,8 +33,8 @@ namespace Ranking.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
+         //   app.UseSwagger();
         }
     }
 }
