@@ -58,4 +58,17 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Scores.sql" />
+    <Build Include="Users.sql" />
+    <Build Include="Clans.sql" />
+    <Build Include="UsersWeaponsScores.sql" />
+    <Build Include="UsersBodyPartsScores.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Ranking.DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ranking.DB.publish.xml" />
+  </ItemGroup>
 </Project>

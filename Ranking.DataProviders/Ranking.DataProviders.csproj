@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ranking.DataProviders\Ranking.DataProviders.csproj" />
     <ProjectReference Include="..\Ranking.Models\Ranking.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.4" />
   </ItemGroup>
 
 </Project>

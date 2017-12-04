@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ab482905-618b-4bb6-99c8-e6e16c17c92a" ChangeDateTime="11/30/2017 11:31:22">
+    <Property Name="ElementName" Value="[dbo].[Scores].[int weapon]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Scores]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WeaponId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="33d43675-9ee4-489e-9b4d-673c371871ca" ChangeDateTime="11/30/2017 12:08:32">
+    <Property Name="ElementName" Value="[dbo].[Clans].[Color]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clans]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Tag" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="51c4988c-2def-4fc0-90a4-a93e59101a54" ChangeDateTime="11/30/2017 12:09:17">
+    <Property Name="ElementName" Value="[dbo].[Clans].[IsDelete]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Clans]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsDeleted" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28669f08-f30d-4c6e-9746-5b1181262237" ChangeDateTime="12/02/2017 21:19:30">
+    <Property Name="ElementName" Value="[dbo].[UsersScores].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersScores]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e5821313-9c2e-4029-9450-d85a085d94ad" ChangeDateTime="12/02/2017 21:28:29">
+    <Property Name="ElementName" Value="[dbo].[UsersBodyPartsScores].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersBodyPartsScores]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+</Operations>
