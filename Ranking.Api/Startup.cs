@@ -9,6 +9,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Ranking.Services.Users;
+using Ranking.DataProviders.Users;
+using Ranking.DataProviders.Scores;
+
 namespace Ranking.Api
 {
     public class Startup
@@ -23,7 +27,11 @@ namespace Ranking.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var _connection = Configuration.GetSection("ConnectionString").Value;
             services.AddMvc();
+            services.AddScoped<IUsersDataProvider, UsersDataProvider>(s => new UsersDataProvider(_connection));
+            services.AddTransient<IScoreDataProvider, ScoreDataProvider>(s => new ScoreDataProvider(_connection));
+            services.AddTransient<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,7 +42,7 @@ namespace Ranking.Api
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
-         //   app.UseSwagger();
+            //   app.UseSwagger();
         }
     }
 }

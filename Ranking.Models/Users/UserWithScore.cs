@@ -7,10 +7,12 @@ namespace Ranking.Models.Users
 {
     public class UserWithScore : UserDTO
     {
+        public UserWithScore()
+        {
 
+        }
         public UserWithScore(UserDTO user)
         {
-            this.Id = user.Id;
             this.NickName = user.NickName;
             this.CreateDate = user.CreateDate;
             this.IsBlocked = user.IsBlocked;

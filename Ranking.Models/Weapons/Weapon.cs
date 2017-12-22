@@ -6,6 +6,7 @@ namespace Ranking.Models.Weapons
 {
     public enum Weapon
     {
+        Suicide,
         Knife,
         Ak47,
         Deagle,
@@ -14,5 +15,6 @@ namespace Ranking.Models.Weapons
         FnMinimi,
         Grenade,
         Socom,
+
     }
 }

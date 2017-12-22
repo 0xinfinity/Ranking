@@ -26,7 +26,7 @@ namespace Ranking.Tests.UserService
             Setup();
             var sut = new UsersService(_scoreDataProviderMock.Object, _usersDataProviderMock.Object);
 
-            var result = await sut.CollectFullUserData(1);
+            var result = await sut.CollectFullUserData("Player");
             Assert.AreEqual(75, result.Kills);
             Assert.AreEqual(50, result.Deaths);
             Assert.AreEqual(Weapon.Deagle, result.FavoriteWeapon);
@@ -44,21 +44,21 @@ namespace Ranking.Tests.UserService
                 new UsersWeaponsScoreDTO
                 {
                     Weapon = Weapon.Ak47,
-                    UserId = 1,
+                    Nickname = "Player",
                     KillsCount = 100,
                     DeathsCount = 200,
                 },
                 new UsersWeaponsScoreDTO
                 {
                     Weapon = Weapon.Deagle,
-                    UserId = 1,
+                    Nickname = "Player",
                     KillsCount = 100,
                     DeathsCount = 200,
                 },
                 new UsersWeaponsScoreDTO
                 {
                     Weapon = Weapon.M82A1,
-                    UserId = 1,
+                    Nickname = "Player",
                     KillsCount = 100,
                     DeathsCount = 199,
                 },

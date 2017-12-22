@@ -4,7 +4,7 @@ namespace Ranking.Models.Users
 {
     public class UserDTO
     {
-        public int Id { get; set; }
+        public int ClanId { get; set; }
         public string NickName { get; set; }
         public UserType UserType { get; set; }
         public DateTime CreateDate { get; set; }
