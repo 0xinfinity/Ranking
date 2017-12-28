@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ranking.Services.Users;
 
 namespace Ranking.Api.Controllers
 {
-    [Route("players")]
+    [Route("/api/[controller]")]
     public class PlayerController : Controller
     {
         private readonly IUsersService _usersService;
@@ -17,7 +14,7 @@ namespace Ranking.Api.Controllers
         }
 
         [Route("list/{page:int}")]
-        public async Task<IActionResult> Index(int page)
+        public async Task<IActionResult> Index(int page = 0)
         {
             var players = await _usersService.GetPlayersList(page, AppConfiguration.ItemsPerPage);
             return Ok(players);

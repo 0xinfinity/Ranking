@@ -29,6 +29,7 @@ namespace Ranking.Api
         {
             var _connection = Configuration.GetSection("ConnectionString").Value;
             services.AddMvc();
+
             services.AddScoped<IUsersDataProvider, UsersDataProvider>(s => new UsersDataProvider(_connection));
             services.AddTransient<IScoreDataProvider, ScoreDataProvider>(s => new ScoreDataProvider(_connection));
             services.AddTransient<IUsersService, UsersService>();
@@ -41,8 +42,12 @@ namespace Ranking.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
-            //   app.UseSwagger();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=List}/{page?}");
+            });
         }
     }
 }
