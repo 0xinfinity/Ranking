@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Users]
 (
-	[Nickname] NVARCHAR(400) NOT NULL PRIMARY KEY, 
+	[UserId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Nickname] NVARCHAR(400) NOT NULL, 
     [ClanId] INT NULL, 
     [UserType] INT NOT NULL, 
     [CreateDate] DATETIME NOT NULL, 
