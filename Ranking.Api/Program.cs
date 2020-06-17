@@ -22,7 +22,7 @@ namespace Ranking.Api
             .UseKestrel()
             .UseIISIntegration()
             .UseStartup<Startup>()
-            .UseUrls("http://localhost:80/")
+            .UseUrls("http://[::]")
             .Build();
     }
 }
