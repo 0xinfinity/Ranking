@@ -31,14 +31,7 @@ jobs:
       with:
         source: "Ranking.Api/bin/Release/netcoreapp2.0/publish"
         target: "/var/www/ranking"
-    - name: Executing remote command
-      - uses: appleboy/ssh-action@master
-          with:
-            host: srv03.mikr.us
-            USERNAME:  root
-            PORT:  10407 
-            KEY: ${{ secrets.mikrus }}
-            script: ls
+
 
     # - name: Build project
     # steps:
