@@ -58,4 +58,4 @@ jobs:
         USERNAME:  root
         PORT:  10407 
         KEY: ${{ secrets.mikrus }}
-        script: dotnet run /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
+        script: dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
