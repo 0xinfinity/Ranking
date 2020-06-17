@@ -51,11 +51,11 @@ jobs:
     #     source: "Ranking.Api/bin/Release/netcoreapp2.0/publish"
     #     target: "/var/www/mywebsite"
 
-    # - name: Executing remote command
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: srv03.mikr.us
-    #     USERNAME:  root
-    #     PORT:  10407 
-    #     KEY: ${{ secrets.mikrus }}
-    #     script: ls
+    - name: Executing remote command
+      uses: appleboy/ssh-action@master
+      with:
+        host: srv03.mikr.us
+        USERNAME:  root
+        PORT:  10407 
+        KEY: ${{ secrets.mikrus }}
+        script: dotnet run /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
