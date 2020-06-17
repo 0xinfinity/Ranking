@@ -29,7 +29,7 @@ jobs:
         PORT: 10407
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "/Ranking.Api/bin/Release/netcoreapp2.0/publish/*"
+        source: "Ranking.Api/bin/Release/netcoreapp2.0/publish"
         target: "/var/www/ranking"
 
 
