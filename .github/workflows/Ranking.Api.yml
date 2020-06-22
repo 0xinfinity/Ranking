@@ -1,0 +1,42 @@
+name: Deploy to Mikrus
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+    ::set-env name={$APPNAME}::{Ranking.Api}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '2.0.0' 
+    - run: dotnet publish $APPNAME -o $APPNAME --configuration Release
+
+    - uses: appleboy/scp-action@master
+      env:
+        HOST: srv03.mikr.us
+        USERNAME: ${{ secrets.ssh_username }}
+        PORT: ${{ secrets.ssh_port }}
+        KEY: ${{ secrets.mikrus }}
+      with:
+        source: "./$APPNAME/$APPNAME/"
+        target: "/var/www/"
+        
+    - name: Executing remote command
+      uses: appleboy/ssh-action@master
+      with:
+        host: srv03.mikr.us
+        USERNAME:  ${{ secrets.ssh_username }}
+        PORT:  ${{ secrets.ssh_port }} 
+        KEY: ${{ secrets.mikrus }}
+        script: |
+         kill $(pgrep -f $APPNAME)&
+         dotnet /var/www/$APPNAME/$APPNAME/$APPNAME.dll >/dev/null &
