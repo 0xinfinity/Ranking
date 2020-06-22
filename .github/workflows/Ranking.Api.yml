@@ -1,14 +1,11 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Deploy to Mikrus
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
 
 jobs:
   build:
@@ -16,11 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    ::set-env name={$APPNAME}::{Ranking.Api}
     - uses: actions/checkout@master
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '2.0.0' # SDK Version to use; x will use the latest version of the 3.1 channel
-    - run: dotnet publish ${{ secrets.app_name }} -o ${{ secrets.app_name }} --configuration Release
+        dotnet-version: '2.0.0' 
+    - run: dotnet publish $APPNAME -o $APPNAME --configuration Release
 
     - uses: appleboy/scp-action@master
       env:
@@ -29,7 +27,7 @@ jobs:
         PORT: ${{ secrets.ssh_port }}
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "./${{ secrets.app_name }}/${{ secrets.app_name }}/"
+        source: "./$APPNAME/$APPNAME/"
         target: "/var/www/"
         
     - name: Executing remote command
@@ -40,6 +38,5 @@ jobs:
         PORT:  ${{ secrets.ssh_port }} 
         KEY: ${{ secrets.mikrus }}
         script: |
-         
-         kill $(pgrep -f ${{ secrets.app_name }})&
-         dotnet /var/www/${{ secrets.app_name }}/${{ secrets.app_name }}/${{ secrets.app_name }}.dll >/dev/null &
+         kill $(pgrep -f $APPNAME)&
+         dotnet /var/www/$APPNAME/$APPNAME/$APPNAME.dll >/dev/null &
