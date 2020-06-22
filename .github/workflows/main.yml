@@ -40,5 +40,7 @@ jobs:
         PORT:  10407 
         KEY: ${{ secrets.mikrus }}
         script: |
+        ls
          (pkill -f Ranking.Api.dll > /dev/null)
-         dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll >out2 &
+         pwd
+         (dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll>/dev/null)
