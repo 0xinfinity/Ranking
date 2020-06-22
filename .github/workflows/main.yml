@@ -29,8 +29,8 @@ jobs:
         PORT: ${{ secrets.ssh_port }}
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "./${{ secrets.app_name }}/${{ secrets.app_name }}"
-        target: "/var/www/${{ secrets.app_name }}"
+        source: "./${{ secrets.app_name }}/${{ secrets.app_name }}/${{ secrets.app_name }}"
+        target: "/var/www/"
         
     - name: Executing remote command
       uses: appleboy/ssh-action@master
