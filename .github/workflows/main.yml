@@ -39,5 +39,4 @@ jobs:
         USERNAME:  root
         PORT:  10407 
         KEY: ${{ secrets.mikrus }}
-        script: pkill -f Ranking.Api.dll
-        script: dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
+        script: pkill -f Ranking.Api.dll && dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
