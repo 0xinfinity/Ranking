@@ -43,4 +43,4 @@ jobs:
         ls
          (pkill -f Ranking.Api.dll > /dev/null)
          pwd
-         dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll > /dev/null
+         dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll
