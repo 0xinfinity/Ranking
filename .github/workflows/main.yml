@@ -41,6 +41,6 @@ jobs:
         KEY: ${{ secrets.mikrus }}
         script: |
          ls;
-         (pkill -f Ranking.Api.dll > /dev/null);
+         kill 25052;
          pwd;
          dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll;
