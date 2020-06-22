@@ -16,13 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      env:
-      APP_NAME: Ranking.Api
     - uses: actions/checkout@master
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.0.0' # SDK Version to use; x will use the latest version of the 3.1 channel
-    - run: dotnet publish $APP_NAME --configuration Release
+    - run: dotnet publish ${{ secrets.app_name }} --configuration Release
 
     - uses: appleboy/scp-action@master
       env:
@@ -31,7 +29,7 @@ jobs:
         PORT: ${{ secrets.ssh_port }}
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "$APP_NAME/bin/Release/netcoreapp2.0/publish"
+        source: "${{ secrets.app_name }}/bin/Release/netcoreapp2.0/publish"
         target: "/var/www/ranking"
         
     - name: Executing remote command
@@ -43,5 +41,5 @@ jobs:
         KEY: ${{ secrets.mikrus }}
         script: |
          
-         kill $(pgrep -f $APP_NAME)&
-         dotnet /var/www/ranking/$APP_NAME/bin/Release/netcoreapp2.0/publish/$APP_NAME.dll >/dev/null &
+         kill $(pgrep -f ${{ secrets.app_name }})&
+         dotnet /var/www/ranking/${{ secrets.app_name }}/bin/Release/netcoreapp2.0/publish/${{ secrets.app_name }}.dll >/dev/null &
