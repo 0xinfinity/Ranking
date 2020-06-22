@@ -41,4 +41,5 @@ jobs:
         KEY: ${{ secrets.mikrus }}
         script: |
          kill $(pgrep Ranking.Api.dll)
+         sleep 5
          dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll&
