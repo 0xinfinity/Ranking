@@ -8,7 +8,7 @@ namespace Ranking.Api.Controllers
         [Route("isAlive")]
         public IActionResult IsAlive()
         {
-            return Ok("I'm alive!");
+            return Ok("I'm f****g alive!");
         }
     }
 }
