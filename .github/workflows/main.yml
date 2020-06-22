@@ -40,5 +40,5 @@ jobs:
         PORT:  10407 
         KEY: ${{ secrets.mikrus }}
         script: |
-         kill $(pgrep Ranking.Api.dll)
-         dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll;
+         kill $(pgrep Ranking.Api.dll);
+         dotnet /var/www/ranking/Ranking.Api/bin/Release/netcoreapp2.0/publish/Ranking.Api.dll&;
