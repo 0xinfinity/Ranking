@@ -5,9 +5,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-    ::set-env name={$APPNAME}::{Ranking.Api}
-
 jobs:
   build:
 
@@ -18,7 +15,7 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.0.0' 
-    - run: dotnet publish $APPNAME -o $APPNAME --configuration Release
+    - run: dotnet publish ${{ secrets.app_name }} -o ${{ secrets.app_name }} --configuration Release
 
     - uses: appleboy/scp-action@master
       env:
@@ -27,7 +24,7 @@ jobs:
         PORT: ${{ secrets.ssh_port }}
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "./$APPNAME/$APPNAME/"
+        source: "./${{ secrets.app_name }}/${{ secrets.app_name }}/"
         target: "/var/www/"
         
     - name: Executing remote command
@@ -38,5 +35,5 @@ jobs:
         PORT:  ${{ secrets.ssh_port }} 
         KEY: ${{ secrets.mikrus }}
         script: |
-         kill $(pgrep -f $APPNAME)&
-         dotnet /var/www/$APPNAME/$APPNAME/$APPNAME.dll >/dev/null &
+         kill $(pgrep -f ${{ secrets.app_name }})&
+         dotnet /var/www/${{ secrets.app_name }}/${{ secrets.app_name }}/${{ secrets.app_name }}.dll >/dev/null &

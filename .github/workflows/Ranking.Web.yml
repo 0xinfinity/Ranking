@@ -5,20 +5,17 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    ::set-env name={$APPNAME}::{Ranking.Api}
     - uses: actions/checkout@master
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '2.0.0' 
-    - run: dotnet publish $APPNAME -o $APPNAME --configuration Release
+    - run: dotnet publish Ranking.Web -o Ranking.Web --configuration Release
 
     - uses: appleboy/scp-action@master
       env:
@@ -27,7 +24,7 @@ jobs:
         PORT: ${{ secrets.ssh_port }}
         KEY: ${{ secrets.mikrus }}
       with:
-        source: "./$APPNAME/$APPNAME/"
+        source: "./Ranking.Web/Ranking.Web/"
         target: "/var/www/"
         
     - name: Executing remote command
@@ -38,5 +35,5 @@ jobs:
         PORT:  ${{ secrets.ssh_port }} 
         KEY: ${{ secrets.mikrus }}
         script: |
-         kill $(pgrep -f $APPNAME)&
-         dotnet /var/www/$APPNAME/$APPNAME/$APPNAME.dll >/dev/null &
+         kill $(pgrep -f Ranking.Web)&
+         dotnet /var/www/Ranking.Web/Ranking.Web/Ranking.Web.dll >/dev/null &
